@@ -64,8 +64,13 @@ int main(int argc, char ** argv)
     const struct lv_ci_example *ex = NULL;
     monitor_hor_res = atoi(argv[1]);
     monitor_ver_res = atoi(argv[2]);
+
+    printf("argc %d\n", argc);
+    for(int i=0;i<argc;i++) {
+        printf("argv[%d] = %s\n", i, argv[i]);
+    }
     /* Check if a specific example is wanted (not "default") */
-    if(argc >= 4 && strcmp(ex->name, "default")) {
+    if(argc >= 4 && strcmp(argv[3], "default")) {
         for(ex = &lv_ci_example_list[0]; ex->name != NULL; ex++) {
             if(!strcmp(ex->name, argv[3])) {
                 break;
@@ -85,9 +90,11 @@ int main(int argc, char ** argv)
 
     /*Load a demo*/
     if(ex != NULL && ex->fn != NULL) {
+        printf("example %s\n", ex->name);
         ex->fn();
     } else {
         extern void CHOSEN_DEMO(void);
+        printf("demo\n");
         CHOSEN_DEMO();
     }
 
