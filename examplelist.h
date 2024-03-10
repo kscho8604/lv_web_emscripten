@@ -6,4 +6,7 @@ struct lv_ci_example {
     void (*fn)(void);
 };
 void lv_example_get_started_1(void);
+void lv_example_get_started_2(void);
+void lv_example_event_3(void);
+void lv_example_list_2(void);
 #endif
